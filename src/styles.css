@@ -1,0 +1,42 @@
+body {
+    margin: 20px;
+}
+
+.dropbtn {
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    background-color: #ced4da;
+    font-size: 1.2em;
+}
+
+.dropdown-content {
+    display: none;
+    position:absolute;
+}
+
+.show {
+    display: block;
+}
+
+.dropdown-align {
+    display: block;
+    background-color: #e9ecef;
+    width: 200px;
+    justify-content: center;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-item:hover {
+    background-color: #6c757d;
+}
