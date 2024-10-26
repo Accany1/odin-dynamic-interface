@@ -6,38 +6,42 @@ document.querySelector(".dropbtn").addEventListener("click", () => {
 );
 
 let currentImage = 0
+const images = document.querySelectorAll(".image-container")
 
 const ImageCarousel = () => {
-    
-    const images = document.querySelectorAll(".image-container")
     const prev = document.querySelector(".prev")
     const next = document.querySelector(".next")
     
     ImageCarouselKnobs(images)
     images[currentImage].style.display = "block"
     UpdateKnobs()
-    prev.addEventListener("click", () => {
-        currentImage--
-        if (currentImage < 0) {
-            currentImage = images.length - 1
-        }
-        for (let i = 0; i < images.length; i++) {
-            images[i].style.display = "none"
-        }
-        images[currentImage].style.display = "block"
-        UpdateKnobs()
-    })
-    next.addEventListener("click", () => {
-        currentImage++
-        if (currentImage > images.length - 1) {
-            currentImage = 0
-        }
-        for (let i = 0; i < images.length; i++) {
-            images[i].style.display = "none"
-        }
-        images[currentImage].style.display = "block"
-        UpdateKnobs()
-    })
+    prev.addEventListener("click", PrevSlide)
+    next.addEventListener("click", NextSlide)
+    
+}
+
+const NextSlide = () => {
+    currentImage++
+    if (currentImage > images.length - 1) {
+        currentImage = 0
+    }
+    for (let i = 0; i < images.length; i++) {
+        images[i].style.display = "none"
+    }
+    images[currentImage].style.display = "block"
+    UpdateKnobs()
+}
+
+const PrevSlide = () => {
+    currentImage--
+    if (currentImage < 0) {
+        currentImage = images.length - 1
+    }
+    for (let i = 0; i < images.length; i++) {
+        images[i].style.display = "none"
+    }
+    images[currentImage].style.display = "block"
+    UpdateKnobs()
 }
 
 const ImageCarouselKnobs = (images) => {
@@ -73,3 +77,4 @@ const UpdateKnobs = () => {
     
 
 ImageCarousel()
+setInterval(NextSlide, 5000)
