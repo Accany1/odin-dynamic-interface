@@ -40,3 +40,33 @@ body {
 .dropdown-item:hover {
     background-color: #6c757d;
 }
+
+.image-main-container {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    position: relative;
+}
+
+.image{
+   width: 500px;
+   height: 100%;
+   object-fit: cover
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    font-weight: bold;
+}
+
+.next {
+    right: 0;
+}
+
+.image-container {
+    display: none;
+}
