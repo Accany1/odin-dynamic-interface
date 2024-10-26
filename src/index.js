@@ -5,13 +5,17 @@ document.querySelector(".dropbtn").addEventListener("click", () => {
 }
 );
 
+let currentImage = 0
 
 const ImageCarousel = () => {
+    
     const images = document.querySelectorAll(".image-container")
     const prev = document.querySelector(".prev")
     const next = document.querySelector(".next")
-    let currentImage = 0
+    
+    ImageCarouselKnobs(images)
     images[currentImage].style.display = "block"
+    UpdateKnobs()
     prev.addEventListener("click", () => {
         currentImage--
         if (currentImage < 0) {
@@ -21,7 +25,7 @@ const ImageCarousel = () => {
             images[i].style.display = "none"
         }
         images[currentImage].style.display = "block"
-        
+        UpdateKnobs()
     })
     next.addEventListener("click", () => {
         currentImage++
@@ -32,7 +36,40 @@ const ImageCarousel = () => {
             images[i].style.display = "none"
         }
         images[currentImage].style.display = "block"
+        UpdateKnobs()
     })
 }
+
+const ImageCarouselKnobs = (images) => {
+    const knobContainer = document.createElement("div")
+    knobContainer.classList.add("knob-container")
+    document.querySelector(".image-main-container").appendChild(knobContainer)
+ 
+    for (let i = 0; i < images.length; i++) {
+        const knob = document.createElement("div")
+        knob.classList.add("knob")
+        knobContainer.appendChild(knob)
+        knob.addEventListener("click", () => {
+            currentImage = i
+            for (let j = 0; j < images.length; j++) {
+                images[j].style.display = "none"
+            }
+            images[currentImage].style.display = "block"
+            UpdateKnobs()
+        })
+        }
+    }
+
+const UpdateKnobs = () => {
+    const allKnobs = document.querySelectorAll(".knob")
+    for (let i = 0; i < allKnobs.length; i++) {
+        if (i === currentImage) {
+            allKnobs[i].style.backgroundColor = "#ced4da"
+        } else {
+            allKnobs[i].style.backgroundColor = "unset"
+        }
+    }
+}
+    
 
 ImageCarousel()

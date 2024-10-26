@@ -70,3 +70,21 @@ body {
 .image-container {
     display: none;
 }
+
+.knob-container {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 10px;
+}
+
+.knob {
+    width: 10px;
+    height: 10px;
+    background-color: none;
+    border: #ced4da solid 1px;
+    border-radius: 50%;
+    cursor: pointer;
+}
